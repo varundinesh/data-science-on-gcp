@@ -9,13 +9,13 @@ fi
 PROJECT=$(gcloud config get-value project)
 BUCKET=$1
 REGION=$2
-PATH=$3
+UPATH=$3
 TOKEN=$4
 
-URL="https://${REGION}-${PROJECT}.cloudfunctions.net/${PATH}"
+URL="https://${REGION}-${PROJECT}.cloudfunctions.net/${UPATH}"
 
 echo {\"year\":\"2015\"\,\"month\":\"03\"\,\"bucket\":\"${BUCKET}\", \"token\":\"${TOKEN}\"} > /tmp/message
 cat /tmp/message
 
-curl -X POST "https://${REGION}-${PROJECT}.cloudfunctions.net/$URL" -H "Content-Type:application/json" --data-binary @/tmp/message
+#curl -X POST "https://${REGION}-${PROJECT}.cloudfunctions.net/$URL" -H "Content-Type:application/json" --data-binary @/tmp/message
 
